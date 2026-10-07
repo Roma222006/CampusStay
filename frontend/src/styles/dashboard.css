@@ -1,0 +1,180 @@
+/*
+=========================================
+CAMPUSSTAY — DASHBOARD LAYOUT UTILITIES
+Supplements style.css; no duplicates.
+=========================================
+*/
+
+/* Dashboard page grid */
+.dashboard-grid {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  animation: gridFadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes gridFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Stats row (for old dashboard pattern) */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* Welcome banner */
+.welcome-banner {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  animation: cardFadeIn 0.4s ease-out both;
+}
+.welcome-banner::before {
+  content: '';
+  position: absolute;
+  top: -30%; right: -10%;
+  width: 45%; height: 160%;
+  background: rgba(255,255,255,0.06);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.welcome-banner h2 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.welcome-banner p {
+  font-size: 0.88rem;
+  opacity: 0.85;
+}
+.welcome-banner .welcome-meta {
+  display: flex;
+  gap: 20px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+.welcome-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* Quick action cards */
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+}
+.quick-action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 14px;
+  background: var(--surface);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: center;
+  animation: cardFadeIn 0.35s ease-out both;
+}
+.quick-action-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(var(--primary-rgb), 0.3);
+}
+.quick-action-card i {
+  font-size: 1.4rem;
+  color: var(--primary);
+  transition: var(--transition);
+}
+.quick-action-card:hover i { transform: scale(1.15); }
+.quick-action-card span {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Recent activity list */
+.recent-activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.recent-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border-solid);
+  transition: background 0.15s;
+}
+.recent-item:last-child { border-bottom: none; }
+.recent-item-icon {
+  width: 40px; height: 40px;
+  border-radius: var(--radius-md);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 0.95rem;
+}
+.recent-item-icon.leave    { background: #DBEAFE; color: #2563EB; }
+.recent-item-icon.complaint{ background: #FEE2E2; color: #DC2626; }
+.recent-item-icon.room     { background: #DCFCE7; color: #16A34A; }
+.recent-item-icon.notice   { background: #FEF3C7; color: #D97706; }
+.recent-item-icon.maintenance { background: #FFEDD5; color: #EA580C; }
+.recent-item-meta { flex: 1; min-width: 0; }
+.recent-item-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recent-item-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+.recent-item-time {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Profile card left */
+.profile-grid {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 28px;
+}
+.profile-card-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  height: fit-content;
+}
+.profile-card-left h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 16px;
+}
+
+@media (max-width: 768px) {
+  .profile-grid { grid-template-columns: 1fr; }
+  .quick-actions { grid-template-columns: repeat(2, 1fr); }
+}
